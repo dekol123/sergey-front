@@ -26,9 +26,6 @@ import {
 
 const complexOfServicesFilters = [
     <TextInput source="description" label="Search by description" alwaysOn />,
-    <ReferenceInput source="id" label="Complex of services" reference="complex-of-services" allowEmpty>
-        <SelectInput optionText="totalCost" />
-    </ReferenceInput>,
 ]
 
 export const ComplexOfServicesList = props => {
@@ -37,7 +34,7 @@ export const ComplexOfServicesList = props => {
     const [complexOfServicesIds, setComplexOfServices] = useState([]);
     const { data: complexOfServicesChoices } = useQuery({
         type:'getList',
-        resource: 'complex-of-services',
+        resource: 'sport_complex_of_services',
         payload: {
             pagination: { page: 1, perPage: 600 },
             sort: { field: 'description', order: 'ASC' },
@@ -87,7 +84,7 @@ export const ComplexOfServicesCreate = props => {
     const redirect = useRedirect();
 
     const onSuccess = ({ data }) => {
-        redirect(`/complex-of-services`);
+        redirect(`/sport_complex_of_services`);
         refresh();
         // notify(`Catalogue of services succesfully created!`);
   };
@@ -95,10 +92,10 @@ export const ComplexOfServicesCreate = props => {
     const [catalogueOfServices, setComplexOfServices] = useState([]);
     const { data: catalogueOfServicesChoices } = useQuery({
         type:'getList',
-        resource: 'catalogue-of-services',
+        resource: 'sport_catalogue_of_services',
         payload: {
             pagination: { page: 1, perPage: 600 },
-            sort: { field: 'description', order: 'ASC' },
+            sort: { field: 'serviceDescription', order: 'ASC' },
             filter: {},
           },
     })
@@ -117,7 +114,7 @@ export const ComplexOfServicesCreate = props => {
                 value && value.map(v => ({ id: v }))
             }
             format={value => value && value.map(v => v.id)}            
-            source="catalogueOfServices" choices={catalogueOfServices} />
+            source="sport_catalogue_of_services" choices={catalogueOfServices} />
         </SimpleForm>
     </Create>
 )}

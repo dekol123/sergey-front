@@ -58,7 +58,7 @@ export const ComplainsSuggestionsCreate = props => {
     const redirect = useRedirect();
 
     const onSuccess = ({ data }) => {
-        redirect(`/complains-suggestions`);
+        redirect(`/complains_suggestions`);
         refresh();
     };
 

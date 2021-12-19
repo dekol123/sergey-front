@@ -58,7 +58,7 @@ export const BrigadeCreate = props => {
     const redirect = useRedirect();
 
     const onSuccess = ({ data }) => {
-        redirect(`/brigade`);
+        redirect(`/sport_brigade`);
         refresh();
     };
     return (<Create onSuccess={onSuccess} {...props}>

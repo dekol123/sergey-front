@@ -20,9 +20,6 @@ import {
 
 const arrivalFilters = [
     <TextInput source="reason" label="Search by reason" alwaysOn />,
-    <ReferenceInput source="id" label="Filter by id" reference="arrivals" allowEmpty>
-        <SelectInput optionText="id" />
-    </ReferenceInput>,
 ]
 
 export const ArrivalsList = props => {  
@@ -35,10 +32,10 @@ export const ArrivalsList = props => {
             tertiaryText={record => {}}
         />) : (
         <Datagrid rowClick="edit">
-            <ReferenceField source="brigadesId" reference="brigade">
+            <ReferenceField source="brigadesId" reference="sport_brigade">
                 <TextField source="nickName" />
             </ReferenceField>
-            <ReferenceField source="registerOfCardsId" reference="register-of-cards">
+            <ReferenceField source="registerOfCardsId" reference="sport_cards_reestr">
                 <TextField source="firstName" />
             </ReferenceField>
             <NumberField source="id" />            
@@ -54,10 +51,10 @@ export const ArrivalsEdit = props => (
         <SimpleForm>
             <TextInput disabled source="id" />            
             <TextInput source="reason" />
-            <ReferenceInput source="brigadesId" reference="brigade">
+            <ReferenceInput source="brigadesId" reference="sport_brigade">
                 <SelectInput optionText="nickName" />
             </ReferenceInput>
-            <ReferenceInput source="registerOfCardsId" reference="register-of-cards">
+            <ReferenceInput source="registerOfCardsId" reference="sport_cards_reestr">
                 <SelectInput optionText="firstName" />
             </ReferenceInput>
         </SimpleForm>
@@ -69,17 +66,17 @@ export const ArrivalsCreate = props => {
     const redirect = useRedirect();
 
     const onSuccess = ({ data }) => {
-        redirect(`/brigade`);
+        redirect(`/sport_arrivals`);
         refresh();
     };
 
     return (<Create onSuccess={onSuccess} {...props}>
         <SimpleForm>             
             <TextInput source="reason" />
-            <ReferenceInput source="brigadesId" reference="brigade">
+            <ReferenceInput source="brigadesId" reference="sport_brigade">
                 <SelectInput optionText="nickName" />
             </ReferenceInput>
-            <ReferenceInput source="registerOfCardsId" reference="register-of-cards">
+            <ReferenceInput source="registerOfCardsId" reference="sport_cards_reestr">
                 <SelectInput optionText="firstName" />
             </ReferenceInput>  
         </SimpleForm>

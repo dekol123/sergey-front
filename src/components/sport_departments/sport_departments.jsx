@@ -4,7 +4,6 @@ import {
     List,
     Datagrid,
     TextField,
-    NumberField,
     EditButton,
     TextInput,
     SimpleForm,
@@ -14,30 +13,27 @@ import {
     SelectInput,
     SimpleList,
     ReferenceField,
-    useRefresh,
-    useRedirect
+    useRedirect,
+    useRefresh
 } from 'react-admin';
 
-const cardFilters = [
-    <TextInput source="cardContent" label="Search by card content" alwaysOn />,
-    <ReferenceInput source="id" label="Filter by id" reference="cards" allowEmpty>
-        <SelectInput optionText="id" />
-    </ReferenceInput>,
+const departmentsFilters = [
+    <TextInput source="reason" label="Search by description" alwaysOn />,
 ]
 
-export const CardList = props => {
+export const DepartmentsList = props => {
     const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
-    return (<List {...props} filters={cardFilters}>
+    return (<List {...props} filters={departmentsFilters}>
         {isSmall ? (
             <SimpleList
             primaryText={record => record.id}
-            secondaryText={record => record.cardContent}
-            tertiaryText={record => {}}
+            secondaryText={record => record.description}
+            tertiaryText={record => record.contacts}
         />) : (
-        <Datagrid rowClick="edit">                        
-            <NumberField source="id" />            
-            <TextField source="cardContent" />
-            <ReferenceField source="registerOfCardId" reference="register-of-cards">
+        <Datagrid rowClick="edit">
+            <TextField source="contacts" />
+            <TextField source="description" />
+            <ReferenceField source="id" reference="sport_medical_personnel">
                 <TextField source="firstName" />
             </ReferenceField>
             <EditButton />
@@ -46,33 +42,34 @@ export const CardList = props => {
     </List>
 )};
 
-export const CardEdit = props => (
+export const DepartmentsEdit = props => (
     <Edit {...props}>
         <SimpleForm>
             <TextInput disabled source="id" />            
-            <TextInput source="cardContent" />
-            <ReferenceInput source="registerOfCardId" reference="register-of-cards">
+            <TextInput source="contacts" />
+            <TextInput source="description" />
+            <ReferenceInput source="id" reference="sport_medical_personnel">
                 <SelectInput optionText="firstName" />
             </ReferenceInput>
         </SimpleForm>
     </Edit>
 )
 
-export const CardCreate = props => {
+export const DepartmentsCreate = props => {
     const refresh = useRefresh();
     const redirect = useRedirect();
 
     const onSuccess = ({ data }) => {
-        redirect(`/cards`);
+        redirect(`/sport_departments`);
         refresh();
     };
-
     return (<Create onSuccess={onSuccess} {...props}>
         <SimpleForm>             
-            <TextInput source="cardContent" />
-            <ReferenceInput source="registerOfCardId" reference="register-of-cards">
+            <TextInput source="contacts" />
+            <TextInput source="description" />
+            <ReferenceInput source="id" reference="sport_medical_personnel">
                 <SelectInput optionText="firstName" />
-            </ReferenceInput>  
+            </ReferenceInput>
         </SimpleForm>
     </Create>)
 }

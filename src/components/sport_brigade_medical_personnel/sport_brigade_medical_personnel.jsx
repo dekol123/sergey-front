@@ -20,9 +20,6 @@ import {
 
 const brigadeMedicalPersonnelFilters = [
     <TextInput source="firstName" label="Search" alwaysOn />,
-    <ReferenceInput source="id" label="Brigade medical personnel" reference="brigade-medical-personnel" allowEmpty>
-        <SelectInput optionText="position" />
-    </ReferenceInput>,
 ]
 
 export const BrigadeMedicalPersonnelList = props => {
@@ -36,7 +33,7 @@ export const BrigadeMedicalPersonnelList = props => {
         />) : (
         <Datagrid rowClick="edit">
             <NumberField source="id" />
-            <ReferenceField source="brigadeId" reference="brigade">
+            <ReferenceField source="brigadeId" reference="sport_brigade">
                 <TextField source="nickName" />
             </ReferenceField>
             <TextField source="firstName" />
@@ -53,7 +50,7 @@ export const BrigadeMedicalPersonnelEdit = props => (
     <Edit {...props}>
         <SimpleForm>
             <TextInput disabled source="id" />
-            <ReferenceInput source="brigadeId" reference="brigade">
+            <ReferenceInput source="brigadeId" reference="sport_brigade">
                 <SelectInput optionText="nickName" />
             </ReferenceInput>
             <TextInput source="firstName" />
@@ -69,7 +66,7 @@ export const BrigadeMedicalPersonnelCreate = props => {
     const redirect = useRedirect();
 
     const onSuccess = ({ data }) => {
-        redirect(`/brigade`);
+        redirect(`/sport_brigade_medical_personnel`);
         refresh();
     };
 
@@ -79,7 +76,7 @@ export const BrigadeMedicalPersonnelCreate = props => {
             <TextInput source="surname" />
             <TextInput source="lastName" />
             <TextInput source="position" />
-            <ReferenceInput source="brigadeId" reference="brigade">
+            <ReferenceInput source="brigadeId" reference="sport_brigade">
                 <SelectInput optionText="nickName" />
             </ReferenceInput>   
         </SimpleForm>

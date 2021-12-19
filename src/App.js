@@ -1,19 +1,20 @@
 import * as React from "react";
 import { Admin, Resource, ShowGuesser, AppBar } from 'react-admin';
 import crudProvider from 'ra-data-nestjsx-crud'
-import { PatientsList, PatientsEdit, PatientsCreate } from "./components/patients";
-import { BrigadeMedicalPersonnelList, BrigadeMedicalPersonnelEdit, BrigadeMedicalPersonnelCreate } from './components/brigade-medical-personnel';
+import { PatientsList, PatientsEdit, PatientsCreate } from "./components/sport_patients";
+import { BrigadeMedicalPersonnelList, BrigadeMedicalPersonnelEdit, BrigadeMedicalPersonnelCreate } from './components/sport_brigade_medical_personnel';
 import { NewsList, NewsEdit, NewsCreate } from "./components/news";
-import { RegisterOfCardsCreate, RegisterOfCardsEdit, RegisterOfCardsList } from "./components/register-of-cards";
-import { BrigadeList, BrigadeEdit, BrigadeCreate } from "./components/brigade";
-import { ArrivalsList, ArrivalsEdit, ArrivalsCreate } from "./components/arrivals";
-import { CardList, CardEdit, CardCreate } from "./components/cards";
+import { RegisterOfCardsCreate, RegisterOfCardsEdit, RegisterOfCardsList } from "./components/sport_cards_reestr";
+import { BrigadeList, BrigadeEdit, BrigadeCreate } from "./components/sport_brigade";
+import { ArrivalsList, ArrivalsEdit, ArrivalsCreate } from "./components/sport_arrivals";
+import { CardEdit, CardCreate } from "./components/sport_cards";
 import { ComplainsSuggestionsEdit, ComplainsSuggestionsList, ComplainsSuggestionsCreate } from "./components/complains-suggestions/complains-suggestions";
-import { CatalogueOfServicesList, CatalogueOfServicesEdit, CatalogueOfServicesCreate } from "./components/catalogue-of-services";
-import { ComplexOfServicesList, ComplexOfServicesCreate, ComplexOfServicesEdit } from './components/complex-of-services';
-import { DepartmentsList, DepartmentsCreate, DepartmentsEdit } from "./components/departments";
+import { CatalogueOfServicesList, CatalogueOfServicesEdit, CatalogueOfServicesCreate } from "./components/sport_catalogue_of_services";
+import { ComplexOfServicesList, ComplexOfServicesCreate, ComplexOfServicesEdit } from './components/sport_complex_of_services';
+import { DepartmentsList, DepartmentsCreate, DepartmentsEdit } from "./components/sport_departments";
 import { MedicalPersonnelList, MedicalPersonnelEdit, MedicalPersonnelCreate } from './components/medical-personnel';
 import { CustomTheme } from './components/theme/theme';
+import {CardList} from "./components/sport_cards/sport_cards";
 
 const dataProvider = crudProvider('http://localhost:3000');
 const App = () => (

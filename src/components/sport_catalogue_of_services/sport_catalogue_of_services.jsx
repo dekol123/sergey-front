@@ -21,9 +21,6 @@ import {
 
 const catalogueOfServicesFilters = [
     <TextInput source="serviceDescription" label="Search by service description" alwaysOn />,
-    <ReferenceInput source="id" label="Catalogue of services" reference="catalogue-of-services" allowEmpty>
-        <SelectInput optionText="price" />
-    </ReferenceInput>,
 ]
 
 export const CatalogueOfServicesList = props => {
@@ -68,14 +65,14 @@ export const CatalogueOfServicesCreate = props => {
     const redirect = useRedirect();
 
     const onSuccess = ({ data }) => {
-        redirect(`/catalogue-of-services`);
+        redirect(`/sport_catalogue_of_services`);
         refresh();
     };
 
     const [medicalPersonnels, setMedicalPersonnels] = useState([]);
     const { data: medicalPersonnelsChoices } = useQuery({
         type:'getList',
-        resource: 'medical-personnel',
+        resource: 'sport_medical_personnel',
         payload: {
             pagination: { page: 1, perPage: 600 },
             sort: { field: 'firstName', order: 'ASC' },
@@ -86,7 +83,7 @@ export const CatalogueOfServicesCreate = props => {
     const [complexOfServices, setComplexOfServices] = useState([]);
     const { data: complexOfServicesChoices } = useQuery({
         type:'getList',
-        resource: 'complex-of-services',
+        resource: 'sport_complex_of_services',
         payload: {
             pagination: { page: 1, perPage: 600 },
             sort: { field: 'description', order: 'ASC' },
@@ -109,13 +106,13 @@ export const CatalogueOfServicesCreate = props => {
                 value && value.map(v => ({ id: v }))
             }
             format={value => value && value.map(v => v.id)}
-            source="medicalPersonnels" choices={medicalPersonnels} />
+            source="sport_medical_personnel" choices={medicalPersonnels} />
             <AutocompleteArrayInput 
             parse={value =>
                 value && value.map(v => ({ id: v }))
             }
             format={value => value && value.map(v => v.id)}
-            source="complexOfServices" choices={complexOfServices} />
+            source="sport_complex_of_services" choices={complexOfServices} />
         </SimpleForm>
     </Create>
 )}

@@ -21,9 +21,6 @@ import {
 
 const patientsFilters = [
     <TextInput source="firstName" label="Search" alwaysOn />,
-    <ReferenceInput source="id" label="Filter by address" reference="patients" allowEmpty>
-        <SelectInput optionText="address" />
-    </ReferenceInput>,
 ]
 
 export const PatientsList = props => {
@@ -42,7 +39,6 @@ export const PatientsList = props => {
             <TextField source="surname" />
             <TextField source="lastName" />
             <TextField source="address" />
-            <TextField source="phoneNumber" />
             <EditButton />
         </Datagrid>
         )}
@@ -58,7 +54,6 @@ export const PatientsEdit = props => (
             <TextInput source="surname" />
             <TextInput source="lastName" />
             <TextInput source="address" />
-            <TextInput source="phoneNumber" />
         </SimpleForm>
     </Edit>
 )
@@ -69,7 +64,7 @@ export const PatientsCreate = props => {
     const redirect = useRedirect();
 
     const onSuccess = ({ data }) => {
-        redirect(`/patients`);
+        redirect(`/sport_patients`);
         refresh();
         // notify(`Catalogue of services succesfully created!`);
   };
@@ -77,7 +72,7 @@ export const PatientsCreate = props => {
   const [medicalPersonnels, setMedicalPersonnels] = useState([]);
     const { data: medicalPersonnelsChoices } = useQuery({
         type:'getList',
-        resource: 'medical-personnel',
+        resource: 'sport_medical_personnel',
         payload: {
             pagination: { page: 1, perPage: 600 },
             sort: { field: 'firstName', order: 'ASC' },
@@ -95,13 +90,12 @@ export const PatientsCreate = props => {
             <TextInput source="surname" />
             <TextInput source="lastName" />
             <TextInput source="address" />
-            <TextInput source="phoneNumber" />
             <AutocompleteArrayInput 
             parse={value =>
                 value && value.map(v => ({ id: v }))
             }
             format={value => value && value.map(v => v.id)}
-            source="medicalPersonnels" choices={medicalPersonnels} />
+            source="sport_medical_personnel" choices={medicalPersonnels} />
         </SimpleForm>
     </Create>
 )}

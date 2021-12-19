@@ -41,7 +41,7 @@ export const RegisterOfCardsList = props => {
             <TextField source="surname" />
             <TextField source="lastName" />
             <TextField source="registration" />
-            <ReferenceField source="patientId" reference="patients">
+            <ReferenceField source="arrivals" reference="sport_patients">
                 <TextField source="firstName" />
             </ReferenceField>
             <EditButton />
@@ -59,7 +59,7 @@ export const RegisterOfCardsEdit = props => (
             <TextInput source="surname" />
             <TextInput source="lastName" />
             <TextInput source="registration" />
-            <ReferenceInput source="patientId" reference="patients">
+            <ReferenceInput source="arrivals" reference="sport_patients">
                 <SelectInput optionText="firstName" />
             </ReferenceInput>
         </SimpleForm>
@@ -71,7 +71,7 @@ export const RegisterOfCardsCreate = props => {
     const redirect = useRedirect();
 
     const onSuccess = ({ data }) => {
-        redirect(`/register-of-cards`);
+        redirect(`/sport_cards_reestr`);
         refresh();
     };
 
@@ -81,7 +81,7 @@ export const RegisterOfCardsCreate = props => {
             <TextInput source="surname" />
             <TextInput source="lastName" />
             <TextInput source="registration" />
-            <ReferenceInput source="patientId" reference="patients">
+            <ReferenceInput source="arrivals" reference="sport_patients">
                 <SelectInput optionText="firstName" />
             </ReferenceInput>
         </SimpleForm>

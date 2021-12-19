@@ -1,13 +1,11 @@
 import { defaultTheme } from 'react-admin';
 import merge from 'lodash/merge';
-import indigo from '@material-ui/core/colors/indigo';
-import pink from '@material-ui/core/colors/pink';
 import red from '@material-ui/core/colors/red';
 
 export const CustomTheme = () => {return merge({}, defaultTheme, {
     palette: {
-        primary: indigo,
-        secondary: pink,
+        primary: { main : '#3df500', },
+        secondary:  { main : '#3df500', },
         error: red,
         contrastThreshold: 3,
         tonalOffset: 0.2,
@@ -21,6 +19,11 @@ export const CustomTheme = () => {return merge({}, defaultTheme, {
         MuiButton: { // override the styles of all instances of this component
             root: { // Name of the rule
                 color: 'white', // Some CSS
+            },
+        MuiAppBar: {
+            root:{
+                color: '#3df500',
+                }
             },
         },
     },

@@ -21,9 +21,6 @@ import {
 
 const medicalPersonnelFilters = [
     <TextInput source="firstName" label="Search by first name" alwaysOn />,
-    <ReferenceInput source="id" label="Medical personnel" reference="medical-personnel" allowEmpty>
-        <SelectInput optionText="address" />
-    </ReferenceInput>,
 ]
 
 export const MedicalPersonnelList = props => {
@@ -72,15 +69,15 @@ export const MedicalPersonnelCreate = props => {
     const redirect = useRedirect();
 
     const onSuccess = ({ data }) => {
-        redirect(`/medical-personnel`);
+        redirect(`/sport_medical_personnel`);
         refresh();
         // notify(`Catalogue of services succesfully created!`);
-  };
+    };
 
     const [catalogueOfServices, setComplexOfServices] = useState([]);
     const { data: catalogueOfServicesChoices } = useQuery({
         type:'getList',
-        resource: 'catalogue-of-services',
+        resource: 'sport_catalogue_of_services',
         payload: {
             pagination: { page: 1, perPage: 600 },
             sort: { field: 'serviceDescription', order: 'ASC' },
@@ -91,7 +88,7 @@ export const MedicalPersonnelCreate = props => {
     const [patients, setPatients] = useState([]);
     const { data: patientsChoices } = useQuery({
         type:'getList',
-        resource: 'patients',
+        resource: 'sport_patients',
         payload: {
             pagination: { page: 1, perPage: 600 },
             sort: { field: 'firstName', order: 'ASC' },
@@ -123,7 +120,7 @@ export const MedicalPersonnelCreate = props => {
                 value && value.map(v => ({ id: v }))
             }
             format={value => value && value.map(v => v.id)}            
-            source="patients" choices={patients} />
+            source="sport_patients" choices={patients} />
         </SimpleForm>
     </Create>
 )}
